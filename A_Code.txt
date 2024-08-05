@@ -1,0 +1,49 @@
+g = {
+    'a': ['b', 'c'],
+    'b': ['d', 'e'],
+    'c': ['f', 'g'],
+    'd': [],
+    'e': [],
+    'f': ['h'],
+    'g': [],
+    'h': []
+}
+
+hf = {
+    'a': 12,
+    'b': 8,
+    'c': 6,
+    'd': 4,
+    'e': 3,
+    'f': 3,
+    'g': 1,
+    'h': 0
+}
+
+def heuristic_value(node):
+    return hf[node]
+
+def total_cost(node, goal):
+    return heuristic_value(node) + g[node].count(goal)
+
+open_set = []
+closed_set = []
+start_node = 'a'
+open_set.append(start_node)
+
+goal = 'h'
+
+while open_set:
+    current_node = min(open_set, key=lambda x: total_cost(x, goal))
+    open_set.remove(current_node)
+
+    if current_node == goal:
+        closed_set.append(current_node)
+        break
+    else:
+        closed_set.append(current_node)
+        for child in g[current_node]:
+            if child not in open_set and child not in closed_set:
+                open_set.append(child)
+
+print(closed_set)
