@@ -1,6 +1,1 @@
-Anupam changes
-<<<<<<< HEAD
-bye world
-=======
-new changes
->>>>>>> ec39f33edc23bf7f210ac92e67a03f428ce5f353
+anupam second change
